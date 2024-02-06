@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_customer_details_view_action" model="ir.ui.view">
+        <field name="name">Customer Details</field>
+        <field name="model">details</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="details_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="details_button" string="Show Info" type="object" class="oe_highlight"
+                            icon="fa-info"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="details_wizard" model="ir.actions.act_window">
+        <field name="name">customer Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">details</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="details_menu_id"
+              name="Customer Details"
+              action="details_wizard"
+              parent="bank_main_menu"
+              sequence="26"/>
+
+</odoo>

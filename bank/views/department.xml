@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="deptaction" model="ir.actions.act_window">
+        <field name="name">Department</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dept.dept</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="bank1">
+                SELECT YOUR DEPARTMENT BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_customer_department"
+              name="Department"
+              parent="bank_main_menu"
+              action="deptaction"
+              sequence="2"/>
+</odoo>

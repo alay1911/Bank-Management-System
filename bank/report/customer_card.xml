@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_customer">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <center>
+                        <u>
+                            <b>
+                                <h2>REPORT OF BANK CUSTOMER</h2>
+                            </b>
+                        </u>
+                    </center>
+                    <br/>
+                    <br/>
+                    <h5>
+                        <b>Sequence No-></b>
+                        <t t-esc="doc.seq"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Name Of Customer-></b>
+                        <t t-esc="doc.name_two"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Email-ID-></b>
+                        <t t-esc="doc.email"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Phone No-></b>
+                        <t t-esc="doc.phone"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Age-></b>
+                        <t t-esc="doc.age"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Gender-></b>
+                        <t t-esc="doc.gender"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Date-></b>
+                        <t t-esc="doc.date"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Amount Deposited-></b>
+                        <t t-esc="doc.amountd"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Adhar Card No-></b>
+                        <t t-esc="doc.adhar"/>
+                    </h5>
+                    <br/>
+                    <h5>
+                        <b>Pan Card No=></b>
+                        <t t-esc="doc.pan"/>
+                    </h5>
+                    <!--                    <t t-set="temp" t-value="doc.mark_boolean()"/>-->
+                </t>
+            </t>
+        </t>
+        <p style="page-break-before: always;"/>
+    </template>
+</odoo>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_view_cancel_transfer" model="ir.ui.view">
+        <field name="name">Bank Management System</field>
+        <field name="model">cancel.transfer</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="transfer_id"/>
+                        <field name="file"/>
+                    </group>
+                    <group>
+                        <field name="reason"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="wizard_import" string="import" type="object" class="oe_highlight" icon="fa-folder"/>
+                    <button name="Delete_account" string="Delete Account" type="object" class="oe_highlight"
+                            icon="fa-times"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="new_cancel_transfer_action" model="ir.actions.act_window">
+        <field name="name">Delete Account</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cancel.transfer</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

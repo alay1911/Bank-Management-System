@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_view_Date_filter" model="ir.ui.view">
+        <field name="name">Customers Reports</field>
+        <field name="model">customer.reports</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="start"/>
+                        <field name="end"/>
+                    </group>
+                    <footer>
+                        <button name="action_print" string="Print Reports" type="object" class="oe_highlight"/>
+                    </footer>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="new_filter_action_final" model="ir.actions.act_window">
+        <field name="name">Customers Reports</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.reports</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,11 @@
+<templates>
+    <t t-name="switch_user">
+        <div class="new_icon">
+            <div class="icon_div">
+                <div class="toggle-icon" role="button">
+                    <i id="login" class="fa fa-user" aria-label="Login with another account"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="faction" model="ir.actions.act_window">
+        <field name="name">Feedback</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">feedback.feedback</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_neutral_face">
+                KINDLY PROVIDE YOUR FEEDBACK BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_customer_feedback"
+              name="Feedback"
+              action="faction"
+              parent="bank_main_menu"
+              sequence="3"/>
+</odoo>

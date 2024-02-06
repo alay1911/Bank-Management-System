@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="module_category_bank">
+        <field name="name">Bank Management</field>
+        <field name="description">Category For Bank</field>
+        <field name="sequence">45</field>
+    </record>
+
+    <record id="group_bank_staff" model="res.groups">
+        <field name="name">Department Staff</field>
+        <field name="category_id" ref="module_category_bank"/>
+    </record>
+
+    <record id="group_create_manager" model="res.groups">
+        <field name="name">Manager Group</field>
+        <field name="category_id" ref="module_category_bank"/>
+    </record>
+
+    <record id="see_his_own_department" model="ir.rule">
+        <field name="name">See His own department.</field>
+        <field name="model_id" ref="model_bank_customer"/>
+        <field name="domain_force">[('manager.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('group_bank_staff'))]"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="perm_read" eval="1"/>
+    </record>
+</odoo>

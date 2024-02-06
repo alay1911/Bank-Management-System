@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="controller_template" name="Bank Customers">
+        <t t-call="website.layout">
+            <div class='container'>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>
+                                List Of Backend Records
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="customers" t-as="doc">
+                            <tr>
+                                <td>
+                                    <t t-esc="doc.partner_id.name"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>

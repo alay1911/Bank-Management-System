@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="first_half" model="ir.actions.report">
+        <field name="name">Bank Report</field>
+        <field name="model">customer.reports</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bank.report_new_final_task_teo</field>
+        <field name="report_file">bank.report_t_new</field>
+        <field name="binding_model_id" ref="model_customer_reports"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

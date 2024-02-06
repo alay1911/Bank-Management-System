@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bank_sequence" model="ir.sequence">
+        <field name="name">bank sequence</field>
+        <field name="code">bank.customer</field>
+        <field name="prefix">BS</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False">
+        </field>
+    </record>
+</odoo>

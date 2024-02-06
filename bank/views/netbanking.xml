@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="naction" model="ir.actions.act_window">
+        <field name="name">Net Banking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">net.net</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="bank1">
+                FOR NET BANKING CLICK ON CREATE BUTTON.
+            </p>
+        </field>
+    </record>
+
+    <record id="form_view_cutomer_new_netbanking" model="ir.ui.view">
+        <field name="name">Bank Management System</field>
+        <field name="model">net.net</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="email_button" string="Send Email" type="object" class="oe_highlight"
+                            icon="fa-envelope"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="accountno"/>
+                            <field name="addharphoto"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_customer_netbanking"
+              name="Net Banking"
+              action="naction"
+              parent="submenu_menu_first"
+              sequence="5"/>
+</odoo>

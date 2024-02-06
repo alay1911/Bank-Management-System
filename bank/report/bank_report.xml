@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="new_bank_report_xlsx" model="ir.actions.report">
+        <field name="name">Customer Report (Excel Format)</field>
+        <field name="model">bank.customer</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">bank.report_customer_xlsx</field>
+        <field name="report_file">bank.report_customer_xlsx</field>
+        <field name="binding_model_id" ref="model_bank_customer"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="new_bank_report" model="ir.actions.report">
+        <field name="name">Customer Report (PDF Format)</field>
+        <field name="model">bank.customer</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bank.report_customer</field>
+        <field name="report_file">bank.report_customer</field>
+        <field name="binding_model_id" ref="model_bank_customer"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="inherit_mrp_xlsx" model="ir.actions.report">
+        <field name="name">Excel Format</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">bank.mrp_report_xlsx</field>
+        <field name="report_file">bank.mrp_report_xlsx</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

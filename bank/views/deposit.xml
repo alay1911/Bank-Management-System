@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="service_deposit_action_bank" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bank.deposit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="bank1">
+                SELECT YOUR DEPARTMENT BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="Service_bank_new_id_deposit"
+              name="Deposit"
+              action="service_deposit_action_bank"
+              parent="submenu_menu_second"
+              sequence="8"/>
+
+    <record id="form_view_deposit" model="ir.ui.view">
+        <field name="name">Bank Management System</field>
+        <field name="model">bank.deposit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" text=" Trust Us..!!!" bg_color="bg-primary"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <br/>
+                            <field name="net_balance"/>
+                            <field name="amount"/>
+                            <field name="sum"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="deposit_tree" model="ir.ui.view">
+        <field name="name">bank.tree</field>
+        <field name="model">bank.deposit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="service_bank_action" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bank.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="bank1">
+                SELECT YOUR DEPARTMENT BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+
+    <record id="form_view_withdraw" model="ir.ui.view">
+        <field name="name">Bank Management System</field>
+        <field name="model">bank.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" text=" Trust Us..!!!" bg_color="bg-primary"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <br/>
+                            <field name="net_balance"/>
+                            <field name="amount"/>
+                            <field name="sum" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    <record id="withdraw_tree" model="ir.ui.view">-->
+<!--        <field name="name">bank.tree</field>-->
+<!--        <field name="model">bank.service</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                <field name="name"/>-->
+<!--                <field name="net_balance"/>-->
+<!--                <field name="amount"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+    <menuitem id="Service_bank_new_id"
+              name="Services"
+              action="service_bank_action"
+              parent="bank_main_menu"
+              sequence="6"/>
+
+    <menuitem id="Service_bank_new_id_withdraw"
+              name="Withdraw"
+              action="service_bank_action"
+              parent="submenu_menu_second"
+              sequence="7"/>
+
+
+    <menuitem id="Service_bank_not"
+              name="Delete Account"
+              action="new_cancel_transfer_action"
+              parent="submenu_menu_first"
+              sequence="15"/>
+
+    <menuitem id="Service_bank_cancel_transfer"
+              name="Customer Report"
+              action="new_filter_action_final"
+              parent="submenu_menu_report"
+              sequence="10"/>
+
+
+    <menuitem id="submenu_menu_first"
+              name="Online Services"
+              action="service_bank_action"
+              parent="Service_bank_new_id"
+              sequence="16"/>
+
+    <menuitem id="submenu_menu_second"
+              name="Money Related Services"
+              action="service_bank_action"
+              parent="Service_bank_new_id"
+              sequence="17"/>
+
+    <menuitem id="submenu_menu_report"
+              name="Report Services"
+              parent="Service_bank_new_id"
+              sequence="25"/>
+
+    <menuitem id="submenu_switch_user"
+              name="User Services"
+              parent="Service_bank_new_id"
+              sequence="27"/>
+
+    <menuitem id="new_switch_user_id"
+              name="Switch User"
+              action="switch_user_action_id"
+              parent="submenu_switch_user"
+              sequence="26"/>
+
+</odoo>

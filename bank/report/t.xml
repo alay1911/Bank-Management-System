@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_new_final_task_teo">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div>
+                        <h4>
+                            <u>
+                                <span>
+                                    <strong>
+                                        <center>CUSTOMER REPORT</center>
+                                    </strong>
+                                </span>
+                            </u>
+                        </h4>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <t>
+                                <th class="text-center">NAME</th>
+                                <th class="text-center">DATE</th>
+                                <th class="text-center">GENDER</th>
+                                <th class="text-center">PHONE NO</th>
+                                <th class="text-center">EMAIL-ID</th>
+                            </t>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="records" t-as="rec">
+                                <tr>
+                                    <td>
+                                        <t t-esc="rec['name_two']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="rec['today_date']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="rec['gender']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="rec['phone']"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="rec['email']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

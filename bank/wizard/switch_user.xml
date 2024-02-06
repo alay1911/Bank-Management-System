@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="switch_user_view_id" model="ir.ui.view">
+        <field name="name">switch user</field>
+        <field name="model">switch</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="user"/>
+                        <field name="password" password="True"/>
+                    </group>
+                    <footer>
+                        <button name="switch_user" string="Switch User" type="object" class="oe_highlight"/>
+                    </footer>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="switch_user_action_id" model="ir.actions.act_window">
+        <field name="name">switch user</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">switch</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+
+
+
+</odoo>

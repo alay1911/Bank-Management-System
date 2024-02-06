@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_confirm" model="ir.actions.server">
+        <field name="name">Confirm This Record</field>
+        <field name="model_id" ref="model_bank_customer"/>
+        <field name="binding_model_id" ref="bank.model_bank_customer"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.status == 'draft':
+                    record.confirm_button()
+        </field>
+    </record>
+
+    <record id="bank_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bank.customer</field>
+        <field name="view_mode">tree,calendar,kanban,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="bank1">
+                CREATE YOUR SAFE BANK ACCOUNT BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+    <menuitem id="bank_main_menu"
+              name="Bank"
+              sequence="0"/>
+    <menuitem id="menu_customer_root"
+              name="Customers"
+              action="bank_action"
+              parent="bank_main_menu"
+              sequence="1"/>
+
+
+    #Graph view
+    <record id="bank_graph" model="ir.ui.view">
+        <field name="name">Bank Graph View</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <graph string="Customer Graph" type="pie">
+                <field name="name_two"/>
+                <field name="gender"/>
+            </graph>
+        </field>
+    </record>
+
+    #Tree View
+    <record id="bank__tree" model="ir.ui.view">
+        <field name="name">bank.tree</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name_two" decoration-warning="name_two"/>
+                <field name="phone" decoration-primary="phone"/>
+                <field name="gender"/>
+                <field name="seq" decoration-bf="1"/>
+                <field name="activity_ids" widget="list_activity"/>
+                <!--                <field name="manager" widget="many2one_avatar"/>-->
+                <field name="status"
+                       decoration-warning="status == 'draft'"
+                       decoration-success="status == 'confirm'"
+                       decoration-danger="status == 'cancel'"
+                       widget="badge"/>
+                <field name="progress" widget="progressbar"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+    # Form view
+
+    <record id="form_view_cutomer_new" model="ir.ui.view">
+        <field name="name">Bank Management System</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,in_process,done,cancel,"/>
+                    <button name="process" string="Draft" type="object" class="oe_highlight"
+                            attrs="{'invisible':[('status','in',('confirm','draft'))]}" icon="fa-file"/>
+                    <button icon="fa-check" name="confirm_button" string="Confirm" type="object" class="oe_highlight"/>
+                    <button name="cancel" string="Cancel" type="object" class="oe_highlight" icon="fa-times"/>
+                    <button name="Archive_button" string="Archive" type="object" class="oe_highlight"
+                            icon="fa-archive"/>
+                    <button name="whatsapp_button" string="Share On Whatsapp" type="object" class="oe_highlight"
+                            icon="fa-whatsapp" groups="bank.group_create_manager"/>
+                </header>
+
+                <div class="alert alert-info text-center o_from_header" role="alert">
+                    <a class="close" data-dismiss="alert">CLOSE</a>
+                    <div>
+                        <strong>
+                            * Amount of rupees 3500 is to be compulsory added in the account at the time of
+                            registration.
+                            <br/>
+                            <br/>
+                            * Age Will Be Filled Automatically By Entering Right DOB.
+                            <br/>
+                            <br/>
+                            * Don't forget to check Addhar Card Num.
+                        </strong>
+                    </div>
+                </div>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="smart_button" type="object"
+                                class="oe_stat_button" icon="fa-tachometer">
+                            <!--                            <field String='Dashboard' name="name" widget="statinfo"/>-->
+                            <b>Dashboard</b>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="priority" widget="priority" class="mr-3"/>
+                        </h1>
+                        <h1>
+                            <field name="name_two"/>
+                        </h1>
+                    </div>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <h1>
+                        <field name="seq"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <!--                            <field name="reference_no"/>-->
+                            <field name="seq"/>
+                            <field name="name_two"/>
+                            <field name="email" widget="CopyClipboardChar"/>
+                            <field name="phone"/>
+                            <field name="amountd" readonly="1"/>
+                            <field name="pan" attrs="{'invisible':[('amountd','=',0)]}"/>
+                            <field name="adhar"/>
+                            <!--                            <button name="context_button" string="Go to feedback" type="object" class="oe_highlight"/>-->
+
+                            <button name="deposit_button" string="Deposit" type="object" class="oe_highlight"/>
+
+                        </group>
+                        <group>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="date" default_focus="1"/>
+                            <field name="de_id"/>
+                            <field name="today_date" readonly="1"/>
+                            <field name="manager"/>
+                            <br/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Write Your Content" name="Check_Phone_no">
+                            <!--                            <group>-->
+                            <field name="ht" placeholder="Enter the Requirements for BMS..!!!"/>
+                            <!--                            </group>-->
+                        </page>
+                        <page string="Check Addhar Card no" name="Check_Pan_card_no">
+                            <group>
+                                <field name="adhar" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Progress" name="progress">
+                            <field name="progress" widget="gauge" style="width:120px;height:90px;cursor:pointer;"/>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <p class="link">
+                            <a href="https://www.fiscal.treasury.gov/bms/#:~:text=The%20Bank%20Management%20System%20(BMS,compensation%2C%20budgets%2C%20and%20outflows.">
+                                Click Here to Understand about BMS..!!!
+                            </a>
+                        </p>
+                        <div align="right">
+                            Support Contacts:
+                            <i class="fa fa-phone icon-large"/>
+                            6351524
+                            <a href="mailto:temp@gmail.com">
+                                <i class="fa fa-envelope-o fa-fw"/>
+                                alayshah@gmail.com
+                            </a>
+                        </div>
+                        <button name="list_button" string="List Of Customers" type="object" class="oe_highlight"/>
+                    </footer>
+                </sheet>
+                <sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    # search view
+
+    <record id="view_college_students_search" model="ir.ui.view">
+        <field name="model">bank.tree</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Student Name"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <filter name="filter_male" string="Male" domain="[('gender' , '=' , 'male')]"/>
+                <separator/>
+                <filter name="filter_female" string="Female" domain="[('gender' , '=' , 'female')]"/>
+                <group>
+                    <filter string="Gender" name="group_by_status" domain="[]" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    # kanban view
+
+    <record id="customer_kanban" model="ir.ui.view">
+        <field name="name">customer.kanban</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name_two"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Avatar"
+                                     t-att-src="kanban_image('bank.customer', 'image', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_global_click">
+                                <div>
+                                    <strong>
+                                        <span>Name:
+                                            <field name="name_two"/>
+                                        </span>
+                                    </strong>
+                                </div>
+                                <div>
+                                    <strong>
+                                        <span>Phone no:
+                                            <field name="phone"/>
+                                        </span>
+                                    </strong>
+                                </div>
+                                <div>
+                                    <strong>
+                                        <span>Gender :
+                                            <field name="gender"/>
+                                        </span>
+                                    </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    # calendar view
+
+    <record id="bank_calendar" model="ir.ui.view">
+        <field name="name">customer.bank</field>
+        <field name="model">bank.customer</field>
+        <field name="arch" type="xml">
+            <calendar string="customer calendar" date_start="date"
+                      color="name">
+                <field name="date"/>
+                <field name="name_two"/>
+            </calendar>
+        </field>
+    </record>
+
+    # Pivot view
+
+    <record id="bank_pivot" model="ir.ui.view">
+        <field name="name">customer.bank</field>
+        <field name="model">bank.customer</field>
+        <field name="priority">60</field>
+        <field name="arch" type="xml">
+            <pivot string="Customer Analysis" sample="1">
+                <field name="name_two"/>
+                <field name="phone"/>
+                <field name="gender"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

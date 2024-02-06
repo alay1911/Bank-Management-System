@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="InvoiceInherit_view_id" model="ir.ui.view">
+        <field name="name">Customers</field>
+        <field name="model">invoiceinherit</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="start"/>
+                        <field name="end"/>
+                        <field name="category_filter"/>
+                    </group>
+                    <group>
+                        <field name="state"/>
+                    </group>
+                    <footer>
+                        <button name="invoiceinherit_button" string="Partner Excel" type="object" class="oe_highlight"/>
+                    </footer>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="InvoiceInherit_action_id" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">invoiceinherit</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

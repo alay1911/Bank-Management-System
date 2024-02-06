@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bank_access,bank_customer,model_bank_customer,,1,1,1,1
+bank_access_feedback,feedback_bank_customer,model_feedback_feedback,,1,1,1,1
+bank_access_net,net_bank_customer,model_net_net,,1,1,1,1
+bank_access_dept,dept_bank_customer,model_dept_dept,,1,1,1,1
+bank_access_list,list_bank_customer,model_list_list,,1,1,1,1
+bank_service_new,bank_service_new_final,model_bank_service,,1,1,1,1
+cancel_transfer,bank_transfer_cancel,model_cancel_transfer,,1,1,1,1
+customer_report_access,customer_report_access_name,model_customer_reports,,1,1,1,1
+customer_deposit,customer_money_deposit,model_bank_deposit,,1,1,1,1
+customer_details,customer_details_name,model_details,,1,1,1,1
+access_switch_user_id,access_switch_user_name,model_switch,,1,1,1,1
+access_new_id,access_new_name,model_invoiceinherit,,1,1,1,1
+
+

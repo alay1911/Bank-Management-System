@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_view_cutomer" model="ir.ui.view">
+        <field name="name">List</field>
+        <field name="model">list.list</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tree_list" model="ir.ui.view">
+        <field name="name">List</field>
+        <field name="model">list.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user_id" widget="many2one_avatar"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="list_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">list.list</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                CREATE YOUR SAFE BANK ACCOUNT BY CLICKING ON CREATE BUTTON..!!!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_customer_list"
+              name="Manager Section"
+              action="list_action"
+              parent="bank_main_menu"
+              sequence="4"/>
+</odoo>
