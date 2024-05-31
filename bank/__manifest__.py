@@ -2,6 +2,7 @@
     'name': 'Bank Management System',
     'version': '1.0.0',
     'category': 'Administration',
+    'license': 'LGPL-3',
     'author': 'Alay Shah',
     'sequence': 1,
     'summary': 'Bank  management system ',
